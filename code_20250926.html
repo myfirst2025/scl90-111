@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>多维度心理健康综合测试</title>
+    <!-- 引入外部CSS文件 -->
+    <link rel="stylesheet" href="style.css">
+    <!-- 引入图标库（用于图标展示） -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 测试头部：标题 + 进度条 + 倒计时 -->
+        <header class="test-header">
+            <h1><<i class="fa fa-heart-o"></</i> 多维度心理健康综合测试</h1>
+            <div class="progress-container">
+                <p class="progress-text">测试进度：<span id="progressNum">0%</span></p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+            </div>
+            <div class="timer">
+                <p>剩余时间：<span id="countdown">15:00</span> <<i class="fa fa-clock-o"></</i></p>
+            </div>
+        </header>
+
+        <!-- 测试说明区（初始显示） -->
+        <div class="test-intro" id="testIntro">
+            <h3>测试说明</h3>
+            <ul>
+                <li>本测试包含 <strong>4个维度（情绪状态、压力水平、社交适应、睡眠质量）</strong>，共20道题目</li>
+                <li>每题根据“近1个月内的实际情况”选择，答案无对错之分</li>
+                <li>测试时长15分钟，超时将自动提交当前答案</li>
+                <li>测试结果仅为参考，不构成专业诊断依据</li>
+            </ul>
+            <button class="start-btn" id="startBtn">开始测试 <<i class="fa fa-arrow-right"></</i></button>
+        </div>
+
+        <!-- 测试题目区（初始隐藏） -->
+        <form class="test-form" id="testForm" style="display: none;">
+            <!-- 第一维度：情绪状态（5题） -->
+            <div class="dimension-section">
+                <h3 class="dimension-title">一、情绪状态</h3>
+                <div class="question">
+                    <p>1. 你是否经常感到情绪低落，对事物失去兴趣？</p>
+                    <div class="options">
+                        <label><input type="radio" name="q1" value="1" required><span>几乎没有</span></label>
+                        <label><input type="radio" name="q1" value="2"><span>偶尔（1-2次/周）</span></label>
+                        <label><input type="radio" name="q1" value="3"><span>经常（3-5次/周）</span></label>
+                        <label><input type="radio" name="q1" value="4"><span>几乎每天</span></label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>2. 你是否容易因小事烦躁、发脾气？</p>
+                    <div class="options">
+                        <label><input type="radio" name="q2" value="1" required><span>几乎没有</span></label>
+                        <label><input type="radio" name="q2" value="2"><span>偶尔（1-2次/周）</span></label>
+                        <label><input type="radio" name="q2" value="3"><span>经常（3-5次/周）</span></label>
+                        <label><input type="radio" name="q2" value="4"><span>几乎每天</span></label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>3. 你是否会突然感到焦虑、心慌？</p>
+                    <div class="options">
+                        <label><input type="radio" name="q3" value="1" required><span>几乎没有</span></label>
+                        <label><input type="radio" name="q3" value="2"><span>偶尔（1-2次/周）</span></label>
+                        <label><input type="radio" name="q3" value="3"><span>经常（3-5次/周）</span></label>
+                        <label><input type="radio" name="q3" value="4"><span>几乎每天</span></label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>4. 你是否对未来感到迷茫、缺乏信心？</p>
+                    <div class="options">
+                        <label><input type="radio" name="q4" value="1" required><span>几乎没有</span></label>
+                        <label><input type="radio" name="q4" value="2"><span>偶尔（1-2次/周）</span></label>
+                        <label><input type="radio" name="q4" value="3"><span>经常（3-5次/周）</span></label>
+                        <label><input type="radio" name="q4" value="4"><span>几乎每天</span></label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>5. 你是否能快速从负面情绪中调整过来？</p>
+                    <div class="options">
+                        <label><input type="radio" name="q5" value="1" required><span>几乎每次都能</span></label>
+                        <label><input type="radio" name="q5" value="2"><span>大部分时候能</span></label>
+                        <label><input type="radio" name="q5" value="3"><span>偶尔能</span></label>
+                        <label><input type="radio" name="q5" value="4"><span>几乎不能</span></label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第二维度：压力水平（5题） -->
+            <div class="dimension-section">
+                <h3 class="dimension-title">二、压力水平</h3>
+                <div class="question">
+                    <p>6. 你是否因工作/学习压力感到疲惫不堪？</p>
+                    <div class="options">
+                        <label><input type="radio" name="q6" value="1" required><span>几乎没有</span></label>
+                        <label><input type="radio" name="q6" value="2"><span>偶尔（1-2次/周）</span></label>
+                        <label><input type="radio" name="q6" value="3"><span>经常（3-5次/周）</span></label>
+                        <label><input type="radio" name="q6" value="4"><span>几乎每天</span></label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>7. 你是否会因压力导致注意力难以集中？</p>
+                    <div class="options">
+                        <label><input type="radio" name="q7" value="1" required><span>几乎没有</span></label>
+                        <label><input type="radio" name="q7" value="2"><span>偶尔（1-2次/周）</span></label>
+                        <label><input type="radio" name="q7" value="3"><span>经常（3-5次/周）</span></label>
+                        <label><input type="radio" name="q7" value="4"><span>几乎每天</span></label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>8. 你是否会通过暴饮暴食/酗酒缓解压力？</p>
+                    <div class="options">
+                        <label><input type="radio" name="q8" value="1" required><span>几乎没有</span></label>
+                        <label><input type="radio" name="q8" value="2"><span>偶尔（1-2次/月）</span></label>
+                        <label><input type="radio" name="q8" value="3"><span>经常（1-2次/周）</span></label>
+                        <label><input type="radio" name="q8" value="4"><span>几乎每天</span></label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>9. 你是否会因担心未完成的事而失眠？</p>
+                    <div class="options">
+                        <label><input type="radio" name="q9" value="1" required><span>几乎没有</span></label>
+                        <label><input type="radio" name="q9" value="2"><span>偶尔（1-2次/周）</span></label>
+                        <label><input type="radio" name="q9" value="3"><span>经常（3-5次/周）</span></label>
+                        <label><input type="radio" name="q9" value="4"><span>几乎每天</span></label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>10. 你是否有有效的压力释放方式（如运动、冥想）？</p>
+                    <div class="options">
+                        <label><input type="radio" name="q10" value="1" required><span>有，且经常使用</span></label>
+                        <label><input type="radio" name="q10" value="2"><span>有，但偶尔使用</span></label>
+                        <label><input type="radio" name="q10" value="3"><span>有，但很少使用</span></label>
+                        <label><input type="radio" name="q10" value="4"><span>没有</span></label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第三维度：社交适应（5题） -->
+            <div class="dimension-section">
+                <h3 class="dimension-title">三、社交适应</h3>
+                <div class="question">
+                    <p>11. 你是否愿意主动参与社交活动（如聚会、团建）？</p>
+                    <div class="options">
+                        <label><input type="radio" name="q11" value="1" required><span>非常愿意</span></label>
+                        <label><input type="radio" name="q11" value="2"><span>比较愿意</span></label>
+                        <label><input type="radio" name="q11" value="3"><span>不太愿意</span></label>
+                        <label><input type="radio" name="q11" value="4"><span>非常不愿意</span></label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>12. 你是否能轻松与陌生人建立沟通？</p>
+                    <div class="options">
+                        <label><input type="radio" name="q12" value="1" required><span>非常轻松</span></label>
+                        <label><input type="radio" name="q12" value="2"><span>比较轻松</span></label>
+                        <label><input type="radio" name="q12" value="3"><span>不太轻松</span></label>
+                        <label><input type="radio" name="q12" value="4"><span>非常困难</span></label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>13. 你是否会因担心他人评价而回避社交？</p>
+                    <div class="options">
+                        <label><input type="radio" name="q13" value="1" required><span>几乎没有</span></label>
+                        <label><input type="radio" name="q13" value="2"><span>偶尔（1-2次/周）</span></label>
+                        <label><input type="radio" name="q13" value="3"><span>经常（3-5次/周）</span></label>
+                        <label><input type="radio" name="q13" value="4"><span>几乎每天</span></label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>14. 你是否有可以倾诉心事的亲密朋友/家人？</p>
+                    <div class="options">
+                        <label><input type="radio" name="q14" value="1" required><span>有多个</span></label>
+                        <label><input type="radio" name="q14" value="2"><span>有1-2个</span></label>
+                        <label><input type="radio" name="q14" value="3"><span>有，但很少倾诉</span></label>
+                        <label><input type="radio" name="q14" value="4"><span>没有</span></label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>15. 你是否觉得自己在社交中“格格不入”？</p>
+                    <div class="options">
+                        <label><input type="radio" name="q15" value="1" required><span>几乎没有</span></label>
+                        <label><input type="radio" name="q15" value="2"><span>偶尔（1-2次/周）</span></label>
+                        <label><input type="radio" name="q15" value="3"><span>经常（3-5次/周）</span></label>
+                        <label><input type="radio" name="q15" value="4"><span>几乎每天</span></label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第四维度：睡眠质量（5题） -->
+            <div class="dimension-section">
+                <h3 class="dimension-title">四、睡眠质量</h3>
+                <div class="question">
+                    <p>16. 你是否能在30分钟内入睡？</p>
+                    <div class="options">
+                        <label><input type="radio" name="q16" value="1" required><span>几乎每次都能</span></label>
+                        <label><input type="radio" name="q16" value="2"><span>大部分时候能</span></label>
+                        <label><input type="radio" name="q16" value="3"><span>偶尔能</span></label>
+                        <label><input type="radio" name="q16" value="4"><span>几乎不能</span></label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>17. 你是否会在夜间频繁醒来（如起夜、多梦）？</p>
+                    <div class="options">
+                        <label><input type="radio" name="q17" value="1" required><span>几乎没有</span></label>
+                        <label><input type="radio" name="q17" value="2"><span>偶尔（1-2次/周）</span></label>
+                        <label><input type="radio" name="q17" value="3"><span>经常（3-5次/周）</span></label>
+                        <label><input type="radio" name="q17" value="4"><span>几乎每天</span></label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>18. 你是否会早醒（比计划起床时间早1小时以上）且无法再次入睡？</p>
+                    <div class="options">
+                        <label><input type="radio" name="q18" value="1" required><span>几乎没有</span></label>
+                        <label><input type="radio" name="q18" value="2"><span>偶尔（1-2次/周）</span></label>
+                        <label><input type="radio" name="q18" value="3"><span>经常（3-5次/周）</span></label>
+                        <label><input type="radio" name="q18" value="4"><span>几乎每天</span></label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>19. 你起床后是否感觉精力充沛？</p>
+                    <div class="options">
+                        <label><input type="radio" name="q19" value="1" required><span>几乎每天都能</span></label>
+                        <label><input type="radio" name="q19" value="2"><span>大部分时候能</span></label>
+                        <label><input type="radio" name="q19" value="3"><span>偶尔能</span></label>
+                        <label><input type="radio" name="q19" value="4"><span>几乎不能</span></label>
+                    </div>
+                </div>
+                <div class="question">
+                    <p>20. 你是否需要依赖药物/助眠产品才能入睡？</p>
+                    <div class="options">
+                        <label><input type="radio" name="q20" value="1" required><span>几乎没有</span></label>
+                        <label><input type="radio" name="q20" value="2"><span>偶尔（1-2次/月）</span></label>
+                        <label><input type="radio" name="q20" value="3"><span>经常（1-2次/周）</span></label>
+                        <label><input type="radio" name="q20" value="4"><span>几乎每天</span></label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 提交按钮 -->
+            <button type="submit" class="submit-btn" id="submitBtn">提交测试 <<i class="fa fa-check"></</i></button>
+        </form>
+
+        <!-- 测试结果区（初始隐藏） -->
+        <div class="test-result" id="testResult" style="display: none;">
+            <h2><<i class="fa fa-bar-chart"></</i> 你的心理健康测试报告</h2>
+            <div class="result-summary">
+                <p><strong>测试总分：</strong><span id="totalScore">-</span> / 80 分</p>
+                <p><strong>测试日期：</strong><span id="testDate">-</span></p>
+            </div>
+
+            <!-- 各维度结果详情 -->
+            <div class="dimension-results">
+                <div class="result-item">
+                    <h4>1. 情绪状态（满分20分）</h4>
+                    <p class="score" id="moodScore">得分：- 分</p>
+                    <p class="evaluation" id="moodEval">-</p>
+                </div>
+                <div class="result-item">
+                    <h4>2. 压力水平（满分20分）</h4>
+                    <p class="score" id="stressScore">得分：- 分</p>
+                    <p class="evaluation" id="stressEval">-</p>
+                </div>
+                <div class="result-item">
+                    <h4>3. 社交适应（满分20分）</h4>
+                    <p class="score" id="socialScore">得分：- 分</p>
+                    <p class="evaluation" id="socialEval">-</p>
+                </div>
+                <div class="result-item">
+                    <h4>4. 睡眠质量（满分20分）</h4>
+                    <p class="score" id="sleepScore">得分：- 分</p>
+                    <p class="evaluation" id="sleepEval">-</p>
+                </div>
+            </div>
+
+            <!-- 综合建议 -->
+            <div class="result-tips">
+                <h4><<i class="fa fa-lightbulb-o"></</i> 综合改善建议</h4>
+                <p id="comprehensiveTips">-</p>
+            </div>
+
+            <!-- 专业提示 -->
+            <div class="professional-tip">
+                <p><<i class="fa fa-exclamation-circle"></</i> 专业提示：本报告仅为心理健康状态参考，若某维度得分≥15分或总分≥60分，建议及时联系心理咨询机构或医院心理科获取专业帮助。</p>
+            </div>
+
+            <!-- 功能按钮 -->
+            <div class="result-btns">
+                <button class="download-btn" id="downloadBtn">下载报告 <<i class="fa fa-download"></</i></button>
+                <button class="restart-btn" id="restartBtn">重新测试 <<i class="fa fa-refresh"></</i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 引入外部JS文件 -->
+    <script src="script.js"></script>
+</body>
+</html>
