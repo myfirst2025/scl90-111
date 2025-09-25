@@ -1,0 +1,384 @@
+/* 全局样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Arial", "Microsoft YaHei", sans-serif;
+}
+
+body {
+    background-color: #f0f2f5;
+    padding: 20px 0;
+}
+
+/* 容器样式 */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* 测试头部样式 */
+.test-header {
+    margin-bottom: 30px;
+}
+
+.test-header h1 {
+    text-align: center;
+    color: #2d3748;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.test-header h1 i {
+    color: #4299e1;
+    margin-right: 8px;
+}
+
+/* 进度条样式 */
+.progress-container {
+    margin-bottom: 15px;
+}
+
+.progress-text {
+    color: #4a5568;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background-color: #e2e8f0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #4299e1;
+    width: 0%;
+    transition: width 0.3s ease;
+    border-radius: 4px;
+}
+
+/* 倒计时样式 */
+.timer {
+    color: #4a5568;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.timer i {
+    margin-left: 5px;
+    color: #f56565;
+}
+
+/* 测试说明区样式 */
+.test-intro {
+    background-color: #f7fafc;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.test-intro h3 {
+    color: #2d3748;
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.test-intro ul {
+    list-style: disc;
+    margin-left: 20px;
+    color: #4a5568;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.test-intro ul li {
+    margin-bottom: 8px;
+}
+
+/* 按钮通用样式 */
+.start-btn, .submit-btn, .download-btn, .restart-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.start-btn {
+    background-color: #4299e1;
+    color: #fff;
+    width: 100%;
+}
+
+.start-btn i {
+    margin-left: 8px;
+}
+
+.start-btn:hover {
+    background-color: #3182ce;
+}
+
+.submit-btn {
+    background-color: #38a169;
+    color: #fff;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.submit-btn i {
+    margin-left: 8px;
+}
+
+.submit-btn:hover {
+    background-color: #2f855a;
+}
+
+/* 测试题目区样式 */
+.dimension-section {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.dimension-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.dimension-title {
+    color: #2d3748;
+    margin-bottom: 15px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+
+.dimension-title::before {
+    content: "";
+    width: 4px;
+    height: 18px;
+    background-color: #4299e1;
+    margin-right: 8px;
+    border-radius: 2px;
+}
+
+.question {
+    margin-bottom: 20px;
+}
+
+.question p {
+    color: #2d3748;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+/* 选项样式 */
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.options label {
+    padding: 12px 15px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #4a5568;
+}
+
+.options label:hover {
+    border-color: #4299e1;
+    background-color: #f7fafc;
+}
+
+.options input:checked + span {
+    color: #4299e1;
+    font-weight: 500;
+}
+
+.options input {
+    display: none;
+}
+
+/* 测试结果区样式 */
+.test-result {
+    background-color: #f7fafc;
+    padding: 25px;
+    border-radius: 8px;
+}
+
+.test-result h2 {
+    text-align: center;
+    color: #2d3748;
+    margin-bottom: 25px;
+    font-size: 22px;
+}
+
+.test-result h2 i {
+    color: #4299e1;
+    margin-right: 8px;
+}
+
+.result-summary {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.result-summary p {
+    color: #4a5568;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.result-summary p strong {
+    color: #2d3748;
+}
+
+/* 维度结果样式 */
+.dimension-results {
+    margin-bottom: 30px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.result-item {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.result-item h4 {
+    color: #2d3748;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.score {
+    color: #4a5568;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.evaluation {
+    color: #2d3748;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* 综合建议样式 */
+.result-tips {
+    margin-bottom: 25px;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.result-tips h4 {
+    color: #2d3748;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.result-tips h4 i {
+    color: #f6ad55;
+    margin-right: 8px;
+}
+
+.result-tips p {
+    color: #4a5568;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+/* 专业提示样式 */
+.professional-tip {
+    background-color: #fff5f5;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 25px;
+    border-left: 4px solid #f56565;
+}
+
+.professional-tip p {
+    color: #742a2a;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.professional-tip i {
+    margin-right: 8px;
+}
+
+/* 结果按钮样式 */
+.result-btns {
+    display: flex;
+    gap: 15px;
+}
+
+.download-btn {
+    background-color: #4299e1;
+    color: #fff;
+    flex: 1;
+}
+
+.download-btn:hover {
+    background-color: #3182ce;
+}
+
+.restart-btn {
+    background-color: #718096;
+    color: #fff;
+    flex: 1;
+}
+
+.restart-btn:hover {
+    background-color: #4a5568;
+}
+
+/* 响应式样式（适配手机） */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+        margin: 0 15px;
+    }
+
+    .dimension-results {
+        grid-template-columns: 1fr;
+    }
+
+    .result-btns {
+        flex-direction: column;
+    }
+
+    .test-header h1 {
+        font-size: 22px;
+    }
+
+    .dimension-title {
+        font-size: 17px;
+    }
+
+    .question p {
+        font-size: 15px;
+    }
+}
